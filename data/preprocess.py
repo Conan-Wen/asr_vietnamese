@@ -89,7 +89,6 @@ def mfccExtract(dataSet="train"):
     else:
         raise ValueError("dataSet parameter must be train or test!")
     
-    tqdm.pandas()
     df = pd.read_csv(list_path)
     
     num_spectrogram_bins = int(fft_length / 2) + 1
