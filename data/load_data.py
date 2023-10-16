@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import string
 
-from data_params import *
+from data.data_params import *
 
 
 lowercase_chars = string.ascii_lowercase
@@ -23,10 +23,7 @@ padded_shapes = (tf.TensorShape([None, mel_n_channels]), tf.TensorShape([None]))
 
 def load_from_file(file_path, transcription):
     mfcc_binary_data = tf.io.read_file(file_path)
-    print(mfcc_binary_data)
     mfcc_data = tf.io.parse_tensor(mfcc_binary_data, out_type=tf.float32)
-    
-    print(mfcc_data)
     
     label = tf.strings.lower(transcription, encoding="utf-8")
     label = tf.strings.unicode_split(label, input_encoding="UTF-8")
