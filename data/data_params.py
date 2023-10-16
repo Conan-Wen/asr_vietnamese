@@ -55,3 +55,6 @@ num_mel_bins = 80
 
 ## Mel-filterbank
 mel_n_channels = 80
+
+## Training parameters
+batch_size = 8

@@ -6,6 +6,7 @@ import csv
 import pandas as pd
 import tensorflow as tf
 import librosa
+import numpy as np
 
 from data.data_params import *
 
@@ -137,6 +138,9 @@ def mfccExtract(dataSet="train"):
             log_mel_spectrogram = (log_mel_spectrogram - means) / (stddevs + 1e-10)
             
             out_file = os.path.join(mfcc_path, data_name) + ".bin"
-            log_mel_spectrogram.numpy().tofile(out_file)
+            
+            # translate tensor to binary data, and save it to file
+            binary_log_mel_spectrogram = tf.io.serialize_tensor(log_mel_spectrogram)
+            tf.io.write_file(out_file, binary_log_mel_spectrogram)
             
             csv_writer.writerow([data_name, out_file, transcription])
