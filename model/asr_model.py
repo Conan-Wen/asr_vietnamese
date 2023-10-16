@@ -43,8 +43,9 @@ class Asr_model(tf.keras.Model):
         self.relu2 = tf.keras.layers.ReLU(
             name="relu2",
         )
-        self.flatten_layer = tf.keras.layers.Flatten(
-            name="flatten_layer",
+        self.reshape_layer = tf.keras.layers.Reshape(
+            target_shape=(1, -1),
+            name="reshape_layer",
         )
         
         self.rnn_layers = []
@@ -100,7 +101,7 @@ class Asr_model(tf.keras.Model):
         x = self.bn_layer2(x)
         x = self.relu2(x)
         
-        x = self.flatten_layer(x)
+        x = self.reshape_layer(x)
         
         for layer in self.rnn_layers:
             x = layer(x)
