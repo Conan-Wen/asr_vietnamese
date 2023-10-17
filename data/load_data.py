@@ -18,7 +18,7 @@ num_to_char = keras.layers.StringLookup(
     vocabulary=char_to_num.get_vocabulary(), oov_token="", invert=True
 )
 
-padded_shapes = (tf.TensorShape([None, mel_n_channels]), tf.TensorShape([None]))
+padded_shapes = (tf.TensorShape([None, num_mel_bins]), tf.TensorShape([None]))
 
 
 def load_from_file(file_path, transcription):
