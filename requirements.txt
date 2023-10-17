@@ -1,4 +1,7 @@
-tqdm
-panda
-request
-tensorflow
+# python=3.10
+
+tqdm==4.64.0
+panda==2.03
+requests==2.28.2
+tensorflow==2.13.0
+jiwer==3.0.3
